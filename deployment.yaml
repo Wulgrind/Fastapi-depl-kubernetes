@@ -30,6 +30,11 @@ spec:
                 configMapKeyRef:
                   name: fastapi-config
                   key: ENV
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: REDIS_PASSWORD
           resources:
             requests:
               cpu: "100m"
