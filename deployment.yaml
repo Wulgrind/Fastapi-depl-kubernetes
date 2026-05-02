@@ -20,7 +20,16 @@ spec:
             - containerPort: 8000
           env:
             - name: REDIS_HOST
-              value: "redis"
+              valueFrom:
+                configMapKeyRef:
+                  name: fastapi-config
+                  key: REDIS_HOST
+
+            - name: ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: fastapi-config
+                  key: ENV
           resources:
             requests:
               cpu: "100m"
